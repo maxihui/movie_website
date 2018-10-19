@@ -78,7 +78,7 @@ DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
         # 'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
-        'HOST': '47.75.91.179',
+        'HOST': 'localhost',
         'PORT': '3306',
         'NAME': 'imdb',
         'USER': 'root',
