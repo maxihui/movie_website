@@ -25,7 +25,7 @@ SECRET_KEY = 'sixlch+=-y+0)yro1_7=0)jl(6-#cq+4540z)c7oj@71fylqqc'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['127.0.0.1', '.plumcandy.site']
 
 
 # Application definition
