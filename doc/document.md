@@ -113,6 +113,7 @@
 
 	```
 	需要在github上先建立一个空项目，获取代码提交地址address
+	然后本地建立仓库，上传到github
 	git init
 	git add --all .
 	git commit -m 'first commit'
@@ -124,11 +125,11 @@
 11. 再次提交
 
 	```
-		git status # 查看状态
-		git add --all .
-		git status # 查看状态
-		git commit -m "changed the html for the site"
-		git push
+	git status # 查看状态
+	git add --all .
+	git status # 查看状态
+	git commit -m "changed the html for the site"
+	git push
 	```
 
 12. 服务器下载代码，并部署环境
@@ -137,10 +138,10 @@
 	mkdir movie.plumcandy.site # 创建项目文件 
 	cd movie.plumcandy.site
 	git clone address 
-	virtualenv --python=python3.4 myvenv # 创建虚拟环境 
+	virtualenv --python=python3.4 myvenv # 创建虚拟环境，当前3.4为稳定版本
 	source bin myvenv/bin/activate # 进入虚拟环境
-	deactivate # 退出虚拟环境
-	pip install django==1.8 # django 
+	deactivate # 退出虚拟环境（别顺手退出了，这里只是告诉你怎么退出虚拟环境）
+	pip install django==2.0.9 # django 当前稳定版本
 	pip install pymysql # 数据库支持
 	pip install gunicorn # 自动部署
 	```
@@ -176,4 +177,17 @@
 	        proxy_pass http://unix:/tmp/movie.plumcandy.site.socket;
 	    }
 	}
+	---
+	$ sudo ln -s /etc/nginx/sites-available/movie.plumcandy.site  /etc/nginx/sites-enabled/movie.plumcandy.site # 将配置文件添加到启动文件夹中
+	配置完成后需要重新启动 nginx 
+	$ sudo service nginx restart # 重启 
+	$ sudo service nginx start # 开启
+	$ sudo service nginx stop # 关闭
+	```
+
+16. 运行项目
+
+	```
+	moviesites/ # 注意跳转到项目路径下运行
+	gunicorn --bind unix:/tmp/movie.plumcandy.site.socket moviesites.wsgi:application
 	```
