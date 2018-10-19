@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>movie 详情页</title>
+	<style type="text/css">
+		body {
+			background-color: #e7e7e7;
+		}
+		.itemcontainer {
+			width: 820px;
+			margin: 0 auto;
+		}
+		.item {
+			padding:1px;
+			width: 400px;
+			height: 520px;
+			float: left;
+		}
+		.item2 {
+			padding:1px;
+			width: 90%;
+			height: 720px;
+			margin: 0 auto;
+		}
+		.flag {
+			width: 1px;
+			height: 700px;
+			float: left;
+			background-color: #aaa;
+		}
+		.content {
+			width: 600;
+			margin: 0 auto;
+			padding: 5px 20px;
+
+		}
+		body {
+		    width: 1280px;
+		    height: 720px;
+		    margin: 0 auto;
+		}
+	</style>
+</head>
+<body>
+	<div class="content">
+		<div class="itemcontainer">
+			<h3>{{ info.as_name }}</h3>
+			<div class="item">
+				<img src="{{ info.img }}" width="350" height="500">
+			</div>
+			<!-- <div class="flag"></div> -->
+			<div class="item">
+				<h3><span>别名：</span>{{ info.name }}</h3>
+				<span><b>分数：</b>{{ info.sorce }}</span>
+				<br>
+				<span><b>导演：</b>{{ info.activator }}</span><br>
+				<span><b>演员：</b>{{ info.actor }}</span><br>
+				<span><b>时长：</b>{{ info.ptime }}</span><br>
+				<span><b>年份：</b>{{ info.pyear }}</span><br>
+				<span><b>国家：</b>{{ info.country }}</span><br>
+				<span><b>语言：</b>{{ info.language }}</span>
+			</div>
+			<div class="item2">
+				<h3>简介：</h3>
+				<div class="content">
+					{{ info.summary | cut:'u3000' }}
+				</div>
+			</div>
+		</div>
+	</div>
+
+</body>
+</html>

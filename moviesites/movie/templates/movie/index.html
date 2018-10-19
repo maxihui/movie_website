@@ -1,0 +1,55 @@
+{% load staticfiles %}
+{% load movie_tags %}
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>movie page</title>
+		<link rel="stylesheet" href="{% static 'movie/css/movie.css' %}">
+	</head>
+	<body>
+		<div class="content">
+
+			<div class="itemcontainer">
+				<h3>类表分类：</h3>
+				{% get_tags as tags_list %}
+				{% for tags in tags_list %}
+					<a href="{% url 'movie:tags' tags.pk %}" class='button1'>{{ tags.title }}</a>
+				{% endfor %}
+			</div>
+			<div class="itemcontainer">
+				<h4>内容：</h4>
+				{% for info in info_list %}
+				<div class="item">
+					<img src="{{ info.img }}" alt='暂无图片' height='600' width="500"><br>
+					<a href="{% url 'movie:detail' info.pk %}"><b>{{ info.name }}</b></a>
+				</div>
+				{% empty %}
+				暂无数据
+				{% endfor %}
+			</div>
+		</div>
+		{% if is_paginated %}
+		<div class="page">
+		    {% if first %}
+		    <a href="?page=1" class="button1">1</a>
+		    {% endif %}
+		    {% if left_has_more %}
+		    <span>...</span>
+		    {% endif %}
+		    {% for i in left %}
+		    <a href="?page={{ i }}" class="button1">{{ i }}</a>
+		    {% endfor %}
+		    <a href="?page={{ page_obj.number }}" style="background-color: #4CAF50" class="button1">{{ page_obj.number }}</a>
+		    {% for i in right %}
+		    <a href="?page={{ i }}" class="button1">{{ i }}</a>
+		    {% endfor %}
+		    {% if right_has_more %}
+		    <span>...</span>
+		    {% endif %}
+		    {% if last %}
+		    <a href="?page={{ paginator.num_pages }}" class="button1">{{ paginator.num_pages }}</a>
+		    {% endif %}
+		</div>
+		{% endif %}
+	</body>
+</html>
