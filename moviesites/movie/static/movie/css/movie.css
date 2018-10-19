@@ -6,6 +6,7 @@ body {
     width: 1280px;
     height: 720px;
     margin: 0 auto;
+    background-color: #efefef;
 }
 .top{
     width: 800px;
@@ -20,6 +21,7 @@ body {
 }
 
 .itemcontainer{
+    padding: 10px;
     width: 1020px;
     /*height: 800px;*/
     margin: 0 auto;
@@ -27,9 +29,17 @@ body {
 
 .item {
     padding:1px;
-    width: 500px;
-    height: 640px;
-    float:left;
+    width: 250px;
+    height: 320px;
+    float: left;
+    text-align: center;
+}
+
+.item img {
+    width: auto;
+    height: auto;
+    max-width: 90%;
+    max-height: 80%;
 }
 
 .page{

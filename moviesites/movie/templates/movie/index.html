@@ -20,7 +20,7 @@
 				<h4>内容：</h4>
 				{% for info in info_list %}
 				<div class="item">
-					<img src="{{ info.img }}" alt='暂无图片' height='600' width="500"><br>
+					<img src="{{ info.img }}" alt='暂无图片' height='250' width="350"><br>
 					<a href="{% url 'movie:detail' info.pk %}"><b>{{ info.name }}</b></a>
 				</div>
 				{% empty %}
